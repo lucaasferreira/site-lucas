@@ -1,37 +1,23 @@
-/**
- * Configuração central do site.
- * TROCAR: substitua valores abaixo pelos dados reais.
- */
 export const siteConfig = {
   name: "Lucas Ferreira",
-  role: "Desenvolvedor de Produtos Digitais",
+  role: "Desenvolvedor Full-Stack",
   shortBio:
-    "Crio aplicativos, sistemas e plataformas que transformam negócios em produtos digitais escaláveis.",
+    "Construo produtos digitais de ponta a ponta — web, mobile e APIs — há 6 anos.",
   yearsExperience: 6,
-  // TROCAR: valor em R$ gerado para clientes (mantenha o formato curto)
-  revenueGenerated: "+R$ 400 mil",
-  location: "Brasil",
-
-  // Contato — TROCAR pelos seus
+  location: "Juiz de Fora / MG",
   contact: {
-    email: "contato@lucasferreira.dev",
-    whatsapp: "5511999999999", // formato internacional, sem + ou espaços
-    whatsappMessage: "Olá Lucas! Vi seu portfólio e quero conversar sobre um projeto.",
-    instagram: "https://instagram.com/lucasferreira", // TROCAR
-    linkedin: "https://linkedin.com/in/lucasferreira", // TROCAR
-    github: "https://github.com/lucasferreira", // TROCAR
+    email: "lucasaugusto.fgomes@gmail.com",
+    whatsapp: "5521990494384", // formato internacional, sem + ou espaços
+    github: "TODO",   // TODO: URL do perfil GitHub
+    linkedin: "TODO", // TODO: URL do perfil LinkedIn
   },
-
   nav: [
+    { label: "Sobre", href: "#sobre" },
+    { label: "Skills", href: "#skills" },
     { label: "Projetos", href: "#projetos" },
-    { label: "Cases", href: "#cases" },
-    { label: "Processo", href: "#processo" },
-    { label: "Depoimentos", href: "#depoimentos" },
+    { label: "Experiência", href: "#experiencia" },
     { label: "Contato", href: "#contato" },
   ],
 } as const;
 
-export function buildWhatsAppLink(message?: string) {
-  const m = encodeURIComponent(message ?? siteConfig.contact.whatsappMessage);
-  return `https://wa.me/${siteConfig.contact.whatsapp}?text=${m}`;
-}
+export const hasValue = (v: string) => v !== "TODO" && v.length > 0;

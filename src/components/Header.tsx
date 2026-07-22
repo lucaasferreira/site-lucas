@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { siteConfig, buildWhatsAppLink } from "@/data/config";
+import { siteConfig } from "@/data/config";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -47,13 +47,7 @@ export function Header() {
           <span className="relative inline-flex h-7 w-7 items-center justify-center overflow-hidden rounded-md bg-gradient-to-br from-brand-200 to-brand-500 font-mono text-xs font-bold text-ink-950">
             LF
           </span>
-          <span className="text-sm sm:text-base">
-            {siteConfig.name}
-            <span className="ml-2 hidden text-white/40 sm:inline">·</span>
-            <span className="ml-2 hidden font-mono text-xs uppercase tracking-widest text-white/40 sm:inline">
-              Studio
-            </span>
-          </span>
+          <span className="text-sm sm:text-base">{siteConfig.name}</span>
         </a>
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Navegação principal">
@@ -69,14 +63,8 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center md:flex">
-          <Button
-            href={buildWhatsAppLink()}
-            external
-            size="md"
-            variant="primary"
-            withArrow
-          >
-            Falar comigo
+          <Button href="#contato" size="md" variant="primary" withArrow>
+            Contato
           </Button>
         </div>
 
@@ -112,14 +100,13 @@ export function Header() {
                 </a>
               ))}
               <Button
-                href={buildWhatsAppLink()}
-                external
+                href="#contato"
                 size="lg"
                 variant="primary"
                 withArrow
                 className="mt-2 w-full"
               >
-                Falar comigo
+                Contato
               </Button>
             </nav>
           </motion.div>
