@@ -4,10 +4,7 @@ import { Linkedin, Github, Mail } from "lucide-react";
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer
-      id="contato"
-      className="relative border-t border-white/[0.06] bg-ink-950"
-    >
+    <footer className="relative border-t border-white/[0.06] bg-ink-950">
       <div className="container-site py-12 sm:py-16">
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
           <div className="md:col-span-2">
