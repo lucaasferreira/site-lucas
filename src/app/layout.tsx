@@ -34,8 +34,7 @@ export const viewport: Viewport = {
 const siteTitle = `${siteConfig.name} — ${siteConfig.role}`;
 
 export const metadata: Metadata = {
-  // TODO: trocar pela URL real de deploy (ex.: Vercel) quando o site for publicado.
-  metadataBase: new URL("https://lucasferreira.dev"),
+  metadataBase: new URL("https://site-lucas-lucasferreira.vercel.app"),
   title: {
     default: siteTitle,
     // As páginas filhas (ex.: /projetos/[slug], /cv) já definem títulos
