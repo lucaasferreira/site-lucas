@@ -9,10 +9,12 @@ export function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2">
-              <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br from-brand-200 to-brand-500 font-mono text-xs font-bold text-ink-950">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-brand-200 to-brand-500 font-serif text-sm font-semibold text-ink-950">
                 LF
               </span>
-              <span className="font-medium text-white">{siteConfig.name}</span>
+              <span className="font-serif text-lg italic text-white">
+                {siteConfig.name}
+              </span>
             </div>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-white/60">
               {siteConfig.shortBio}

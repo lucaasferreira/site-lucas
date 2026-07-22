@@ -44,10 +44,12 @@ export function Header() {
           className="group flex items-center gap-2 font-medium tracking-tight text-white"
           aria-label="Voltar ao topo"
         >
-          <span className="relative inline-flex h-7 w-7 items-center justify-center overflow-hidden rounded-md bg-gradient-to-br from-brand-200 to-brand-500 font-mono text-xs font-bold text-ink-950">
+          <span className="relative inline-flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-brand-200 to-brand-500 font-serif text-sm font-semibold text-ink-950">
             LF
           </span>
-          <span className="text-sm sm:text-base">{siteConfig.name}</span>
+          <span className="font-serif text-base italic sm:text-lg">
+            {siteConfig.name}
+          </span>
         </a>
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Navegação principal">

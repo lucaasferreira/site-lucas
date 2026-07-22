@@ -8,32 +8,32 @@ export function About() {
       <div className="container-site">
         <div className="flex max-w-3xl flex-col gap-6">
           <Reveal>
-            <SectionLabel>Sobre</SectionLabel>
+            <SectionLabel>Sobre mim</SectionLabel>
           </Reveal>
 
           <Reveal delay={0.05}>
-            <h2 className="text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Um pouco sobre o meu trabalho
+            <h2 className="text-balance font-serif text-4xl font-normal leading-[1.05] tracking-tight text-white sm:text-5xl">
+              Eu gosto de resolver problema com código.
             </h2>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <p className="text-pretty text-base leading-relaxed text-white/65 sm:text-lg">
-              Há {siteConfig.yearsExperience} anos construindo produtos digitais
-              de ponta a ponta — do banco de dados à interface. Atuo em todo o
-              ciclo do desenvolvimento: modelagem de dados, APIs, aplicações web
-              e mobile, e mais recentemente integrações com IA. Gosto de
-              transformar problemas de negócio em software que funciona, é fácil
-              de manter e entrega valor de verdade.
+            <p className="text-pretty text-lg leading-relaxed text-white/70">
+              Faz {siteConfig.yearsExperience} anos que trabalho com
+              desenvolvimento, e o que me prende é o mesmo desde o começo: pegar
+              um problema bagunçado e transformar em algo que funciona bem. Atuo
+              no ciclo inteiro — modelo o banco, escrevo a API, construo a
+              interface no web e no mobile, e ultimamente venho colocando IA pra
+              trabalhar junto.
             </p>
           </Reveal>
 
           <Reveal delay={0.15}>
-            <p className="text-pretty text-base leading-relaxed text-white/65 sm:text-lg">
-              Meu foco é full-stack: React e Next.js no front-end, React Native
-              no mobile, e Node.js com PostgreSQL no back-end. Estou baseado em{" "}
-              {siteConfig.location} e disponível para novas oportunidades —
-              remotas ou presenciais.
+            <p className="text-pretty text-lg leading-relaxed text-white/70">
+              Meu forte é ser full-stack sem ser raso: React e Next no front,
+              React Native no mobile, Node com PostgreSQL no back. Moro em{" "}
+              {siteConfig.location} e estou aberto a novas oportunidades — remoto
+              ou presencial.
             </p>
           </Reveal>
         </div>

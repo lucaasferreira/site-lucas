@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Lucas Ferreira",
   role: "Desenvolvedor Full-Stack",
   shortBio:
-    "Construo produtos digitais de ponta a ponta — web, mobile e APIs — há 6 anos.",
+    "Sou desenvolvedor full-stack. Há seis anos pego ideias e as levo até o ar — do banco de dados à interface, no navegador e no celular.",
   yearsExperience: 6,
   location: "Juiz de Fora / MG",
   contact: {

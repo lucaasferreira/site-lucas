@@ -13,15 +13,16 @@ export function Projects() {
           </Reveal>
 
           <Reveal delay={0.05}>
-            <h2 className="text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Projetos
+            <h2 className="text-balance font-serif text-4xl font-normal leading-[1.05] tracking-tight text-white sm:text-5xl">
+              Coisas que eu construí
             </h2>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <p className="text-pretty text-base leading-relaxed text-white/65 sm:text-lg">
-              Produtos completos que levei do banco de dados à interface —
-              SaaS multi-tenant, apps mobile e plataformas em produção.
+            <p className="text-pretty text-lg leading-relaxed text-white/70">
+              Uma seleção do que já tirei do papel — plataformas SaaS, apps
+              mobile e sistemas rodando em produção. Clica em qualquer um pra ver
+              como foi feito por dentro.
             </p>
           </Reveal>
         </div>
@@ -29,7 +30,7 @@ export function Projects() {
         <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, i) => (
             <Reveal key={project.slug} delay={0.05 * (i % 3)} className="h-full">
-              <ProjectCard project={project} />
+              <ProjectCard project={project} index={i + 1} />
             </Reveal>
           ))}
         </div>

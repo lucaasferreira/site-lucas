@@ -7,7 +7,7 @@ export const experience: Job[] = [
     org: "Projetos próprios e para clientes",
     period: "2019 — atual (6 anos)",
     summary:
-      "Desenvolvimento de produtos digitais de ponta a ponta: plataformas SaaS multi-tenant, apps mobile (React Native/Expo), APIs (Fastify, Elysia), integrações de pagamento e recursos de IA (RAG, agentes). Vários projetos em produção com clientes reais.",
+      "Trabalho sozinho e com clientes, do primeiro commit ao deploy. Já coloquei no ar plataformas SaaS multi-tenant, apps em React Native, APIs em Fastify e Elysia, integrações de pagamento e, mais recentemente, recursos de IA (RAG e agentes). Boa parte está em produção, com gente usando todo dia.",
     stack: ["React","Next.js","React Native","Node.js","Fastify","Elysia","PostgreSQL","Prisma","Drizzle","Docker","IA/RAG"],
   },
 ];

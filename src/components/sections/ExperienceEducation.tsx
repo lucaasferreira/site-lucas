@@ -15,15 +15,15 @@ export function ExperienceEducation() {
           </Reveal>
 
           <Reveal delay={0.05}>
-            <h2 className="text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            <h2 className="text-balance font-serif text-4xl font-normal leading-[1.05] tracking-tight text-white sm:text-5xl">
               Experiência &amp; formação
             </h2>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <p className="text-pretty text-base leading-relaxed text-white/65 sm:text-lg">
-              O caminho que me trouxe até aqui — a prática construindo produtos
-              e a base de estudos que sustenta o trabalho do dia a dia.
+            <p className="text-pretty text-lg leading-relaxed text-white/70">
+              O caminho até aqui — a prática construindo produto de verdade e a
+              base de estudo que segura a ponta no dia a dia.
             </p>
           </Reveal>
         </div>

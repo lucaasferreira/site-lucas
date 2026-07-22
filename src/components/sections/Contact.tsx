@@ -17,16 +17,15 @@ export function Contact() {
           </Reveal>
 
           <Reveal delay={0.05}>
-            <h2 className="text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl">
-              <GradientText variant="mono">Vamos conversar?</GradientText>
+            <h2 className="text-balance font-serif text-5xl font-normal leading-[1] tracking-tight text-white sm:text-6xl">
+              Vamos <GradientText className="italic">conversar?</GradientText>
             </h2>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <p className="text-pretty text-base leading-relaxed text-white/65 sm:text-lg">
-              Estou aberto a novas oportunidades — remotas ou presenciais. Se
-              você tem um projeto ou uma vaga em mente, é só chamar. Respondo
-              rápido.
+            <p className="text-pretty text-lg leading-relaxed text-white/70">
+              Estou aberto a novas oportunidades, remoto ou presencial. Se o que
+              você viu por aqui fez sentido, me chama — costumo responder rápido.
             </p>
           </Reveal>
 

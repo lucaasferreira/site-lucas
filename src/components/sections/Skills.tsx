@@ -14,15 +14,15 @@ export function Skills() {
           </Reveal>
 
           <Reveal delay={0.05}>
-            <h2 className="text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Skills &amp; stack
+            <h2 className="text-balance font-serif text-4xl font-normal leading-[1.05] tracking-tight text-white sm:text-5xl">
+              As ferramentas que eu uso todo dia
             </h2>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <p className="text-pretty text-base leading-relaxed text-white/65 sm:text-lg">
-              As tecnologias e ferramentas que uso no dia a dia para levar
-              produtos do banco de dados à interface.
+            <p className="text-pretty text-lg leading-relaxed text-white/70">
+              Não é uma lista pra impressionar — é o que eu realmente pego pra
+              construir e manter os produtos aqui do lado.
             </p>
           </Reveal>
         </div>
@@ -30,8 +30,14 @@ export function Skills() {
         <div className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
           {skillGroups.map((group, i) => (
             <Reveal key={group.title} delay={0.05 * i}>
-              <Card className="h-full p-6">
-                <h3 className="text-lg font-semibold tracking-tight text-white">
+              <Card className="group h-full p-6 transition-colors hover:border-brand-300/25">
+                <span
+                  aria-hidden
+                  className="font-mono text-[11px] tracking-[0.2em] text-brand-300/70"
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-2 font-serif text-xl font-normal tracking-tight text-white">
                   {group.title}
                 </h3>
                 <div className="mt-4 flex flex-wrap gap-2">

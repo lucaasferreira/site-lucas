@@ -8,45 +8,50 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "monospace"],
-        serif: ["var(--font-instrument-serif)", "serif"],
+        // Corpo/UI: grotesca humanista, quente e legível
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        // Mono: eyebrows, datas, detalhes técnicos
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+        // Display editorial com caráter (Fraunces)
+        serif: ["var(--font-serif)", "Georgia", "serif"],
       },
       colors: {
-        // Surface system: zinc-based dark premium
+        // Superfície: preto-quente / espresso (não o zinco frio)
         ink: {
-          950: "#08080a",
-          900: "#0f0f12",
-          800: "#18181b",
-          700: "#27272a",
-          600: "#3f3f46",
+          950: "#0c0a08",
+          900: "#15110d",
+          800: "#1f1913",
+          700: "#2c241c",
+          600: "#463a2e",
         },
-        // Brand accent: lime/emerald gradient (growth, ROI)
+        // Acento de marca: âmbar / ouro-mel (calor, artesania)
         brand: {
-          DEFAULT: "#bef264", // lime-300
-          50: "#f7fee7",
-          100: "#ecfccb",
-          200: "#d9f99d",
-          300: "#bef264",
-          400: "#a3e635",
-          500: "#84cc16",
-          600: "#65a30d",
+          DEFAULT: "#eab963",
+          50: "#fdf7ed",
+          100: "#faecd0",
+          200: "#f2d29a",
+          300: "#eab963",
+          400: "#e0a03f",
+          500: "#c9822a",
+          600: "#a3661f",
         },
-        // Warm accent for premium "human" touches
+        // Secundário quente: terracota suave (uso raro, pares análogos)
         warm: {
-          400: "#fbbf24",
-          500: "#f59e0b",
+          400: "#e8896b",
+          500: "#d96f4c",
         },
       },
       backgroundImage: {
         "grid-soft":
-          "linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px)",
+          "linear-gradient(to right, rgba(255,248,236,0.035) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,248,236,0.035) 1px, transparent 1px)",
         "radial-glow":
-          "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(190, 242, 100, 0.15), transparent 70%)",
+          "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(234, 185, 99, 0.16), transparent 70%)",
       },
       animation: {
-        "shimmer": "shimmer 2.5s linear infinite",
-        "float": "float 6s ease-in-out infinite",
+        shimmer: "shimmer 2.5s linear infinite",
+        float: "float 6s ease-in-out infinite",
+        marquee: "marquee 40s linear infinite",
+        "pulse-soft": "pulse-soft 2.4s ease-in-out infinite",
       },
       keyframes: {
         shimmer: {
@@ -57,11 +62,20 @@ const config: Config = {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-8px)" },
         },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        "pulse-soft": {
+          "0%, 100%": { opacity: "1", transform: "scale(1)" },
+          "50%": { opacity: "0.55", transform: "scale(0.9)" },
+        },
       },
       boxShadow: {
-        "glow-sm": "0 0 24px -8px rgba(190, 242, 100, 0.35)",
-        "glow-md": "0 0 48px -12px rgba(190, 242, 100, 0.45)",
-        "card": "0 1px 0 0 rgba(255,255,255,0.04) inset, 0 8px 32px -16px rgba(0,0,0,0.6)",
+        "glow-sm": "0 0 24px -8px rgba(234, 185, 99, 0.40)",
+        "glow-md": "0 0 60px -14px rgba(234, 185, 99, 0.50)",
+        card: "0 1px 0 0 rgba(255,248,236,0.05) inset, 0 18px 48px -24px rgba(0,0,0,0.75)",
+        lift: "0 28px 64px -28px rgba(0,0,0,0.85), 0 0 0 1px rgba(234,185,99,0.10)",
       },
     },
   },

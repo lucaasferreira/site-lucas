@@ -73,7 +73,7 @@ export function ProjectDetail({ project }: { project: Project }) {
               {highlight ? (
                 <>
                   {" "}
-                  <GradientText>{highlight}</GradientText>
+                  <GradientText className="italic">{highlight}</GradientText>
                 </>
               ) : null}
             </h1>

@@ -32,39 +32,58 @@
 
   body {
     @apply bg-ink-950 text-white font-sans antialiased;
-    font-feature-settings: "ss01", "cv11";
+    /* atmosfera quente: brilho âmbar no topo + brasa embaixo */
     background-image:
-      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(190, 242, 100, 0.10), transparent 60%),
-      radial-gradient(ellipse 60% 40% at 90% 110%, rgba(190, 242, 100, 0.05), transparent 60%);
+      radial-gradient(ellipse 90% 55% at 50% -12%, rgba(234, 185, 99, 0.13), transparent 60%),
+      radial-gradient(ellipse 70% 45% at 88% 8%, rgba(217, 111, 76, 0.06), transparent 55%),
+      radial-gradient(ellipse 60% 50% at 8% 108%, rgba(234, 185, 99, 0.05), transparent 60%);
     background-attachment: fixed;
   }
 
-  ::selection {
-    background-color: rgba(190, 242, 100, 0.25);
-    color: white;
+  /* Serifa editorial com feições vivas onde for usada */
+  .font-serif {
+    font-feature-settings: "ss01", "swsh", "salt";
   }
 
-  /* Scrollbar premium discreta */
+  ::selection {
+    background-color: rgba(234, 185, 99, 0.28);
+    color: #0c0a08;
+  }
+
+  /* Scrollbar discreta e quente */
   ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: #0f0f12;
+    background: #15110d;
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(234, 185, 99, 0.14);
     border-radius: 8px;
+    border: 2px solid #15110d;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(234, 185, 99, 0.28);
   }
 }
 
 /* ===========================================================
+   Textura de grão fílmico — sobreposta a toda a página.
+   Sutil (não atrapalha leitura), dá tato/analógico ao dark.
+   =========================================================== */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ===========================================================
    Impressão / Salvar como PDF (página /cv)
-   Esconde a navegação global e o cromo do site, força fundo
-   branco + texto escuro e ajusta as margens A4 para 1 página.
    =========================================================== */
 @media print {
   @page {
@@ -72,9 +91,9 @@
     margin: 12mm;
   }
 
-  /* Header e Footer globais (layout.tsx) + qualquer barra de ação */
   body > header,
   body > footer,
+  .grain-overlay,
   .no-print {
     display: none !important;
   }
@@ -85,13 +104,11 @@
     background-image: none !important;
   }
 
-  /* Evita cortar seções/cartões entre páginas */
   section,
   article {
     break-inside: avoid;
   }
 
-  /* Garante que as cores de fundo/accents saiam na impressão */
   * {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
@@ -110,14 +127,26 @@
     text-wrap: pretty;
   }
 
-  /* Linha sutil divisora */
+  /* Linha sutil divisora (quente) */
   .hairline {
-    @apply h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent;
+    @apply h-px w-full bg-gradient-to-r from-transparent via-brand-300/15 to-transparent;
   }
 
   /* Grid pattern background */
   .bg-dot-grid {
-    background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(255, 248, 236, 0.06) 1px, transparent 1px);
     background-size: 24px 24px;
+  }
+
+  /* Sublinhado editorial que cresce no hover */
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.35s ease;
+  }
+  .link-underline:hover {
+    background-size: 100% 1px;
   }
 }

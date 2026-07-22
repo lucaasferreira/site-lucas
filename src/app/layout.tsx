@@ -1,32 +1,36 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { Fraunces, Hanken_Grotesk, Geist_Mono } from "next/font/google";
 import { siteConfig } from "@/data/config";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Corpo / UI — grotesca humanista, quente e legível
+const sans = Hanken_Grotesk({
+  variable: "--font-sans",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+// Mono — eyebrows, datas, detalhes técnicos
+const mono = Geist_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Display editorial com caráter (serifa de contraste alto e opsz)
+const serif = Fraunces({
+  variable: "--font-serif",
   subsets: ["latin"],
-  display: "swap",
-});
-
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
-  weight: "400",
+  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
-  subsets: ["latin"],
   display: "swap",
 });
 
 export const viewport: Viewport = {
-  themeColor: "#08080a",
+  themeColor: "#0c0a08",
   width: "device-width",
   initialScale: 1,
 };
@@ -81,9 +85,11 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable}`}
+      className={`${sans.variable} ${mono.variable} ${serif.variable}`}
     >
       <body>
+        {/* textura de grão fílmico sobre toda a página */}
+        <div aria-hidden className="grain-overlay" />
         <Header />
         {children}
         <Footer />
