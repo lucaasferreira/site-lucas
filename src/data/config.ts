@@ -8,7 +8,7 @@ export const siteConfig = {
   contact: {
     email: "lucasaugusto.fgomes@gmail.com",
     whatsapp: "5521990494384", // formato internacional, sem + ou espaços
-    github: "TODO",   // TODO: URL do perfil GitHub
+    github: "https://github.com/lucaasferreira",
     linkedin: "TODO", // TODO: URL do perfil LinkedIn
   },
   nav: [
