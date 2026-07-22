@@ -1,54 +1,81 @@
-# Lucas Ferreira — Portfolio Premium
+# Lucas Ferreira — Portfólio (Desenvolvedor Full-Stack)
 
-Site portfólio de Lucas Ferreira (desenvolvedor de produtos digitais, 6 anos).
-Foco: case studies premium, autoridade e conversão de clientes de alto valor.
+Portfólio pessoal de **Lucas Ferreira**, construído para **candidatura a vagas
+full-stack**. O site apresenta uma visão objetiva do perfil profissional: quem
+sou, minhas skills, projetos reais (com páginas de detalhe por projeto),
+experiência e formas de contato — além de um currículo em `/cv` pronto para
+impressão/exportação em PDF.
+
+Sem copy de vendas, sem clientes fictícios e sem métricas inventadas: os textos
+descrevem projetos e fatos de engenharia reais.
 
 ## Stack
-- Next.js 15 (App Router) + React 19 + TypeScript
-- Tailwind CSS v3.4 (com tokens custom)
-- Framer Motion (animações)
-- Recharts (gráficos de resultado)
-- Lucide React (ícones)
-- Geist Sans/Mono + Instrument Serif (via next/font)
+
+- **Next.js 15** (App Router) + **React 19** + **TypeScript**
+- **Tailwind CSS v3.4** (com tokens custom)
+- **Framer Motion** (animações, respeitando `prefers-reduced-motion`)
+- **Recharts** (visualizações pontuais)
+- **Lucide React** (ícones)
+- **Geist Sans/Mono + Instrument Serif** (via `next/font`)
 
 ## Como rodar
+
 ```bash
-npm install
-npm run dev
-# http://localhost:3000
+npm install      # instala dependências
+npm run dev      # ambiente de desenvolvimento → http://localhost:3000
+npm test         # testes de integridade dos dados (node:test via tsx)
+npm run build    # build de produção (gera as rotas estáticas)
 ```
 
-## Arquitetura
+## Estrutura
+
 ```
 src/
-├── app/              # layout, page, globals
-├── components/
-│   ├── sections/     # Hero, Metrics, Services, ProjectsShowcase,
-│   │                 # CaseStudies, Process, InProgress, Testimonials,
-│   │                 # Audiences, FinalCTA
-│   ├── ui/           # Button, Badge, Card, Reveal, etc.
-│   ├── Header.tsx
-│   ├── Footer.tsx
-│   └── WhatsAppFloat.tsx
-├── data/             # projects, testimonials, metrics, config (SUBSTITUIR aqui)
-└── lib/utils.ts
+├── app/
+│   ├── layout.tsx              # metadata global + SEO / Open Graph
+│   ├── page.tsx                # home (Hero, Sobre, Skills, Projetos, Experiência, Contato)
+│   ├── projetos/[slug]/page.tsx# páginas de detalhe por projeto (10 rotas estáticas)
+│   └── cv/page.tsx             # currículo com impressão → PDF
+├── components/                 # Header, Footer, seções e componentes de UI
+└── data/                       # FONTE DE DADOS — editar aqui
+    ├── config.ts               # nome, cargo, bio, contato (e-mail, WhatsApp, GitHub, LinkedIn)
+    ├── projects.ts             # os 10 projetos (+ projects.test.ts valida integridade)
+    ├── experience.ts           # experiência profissional
+    └── skills.ts               # skills / tecnologias
 ```
 
-## Como atualizar os projetos/dados
-Tudo é centralizado em `src/data/`:
-- `config.ts` — WhatsApp, e-mail, links sociais
-- `projects.ts` — projetos entregues e em andamento
-- `testimonials.ts` — depoimentos (texto/vídeo)
-- `metrics.ts` — números de autoridade e gráficos
+## Onde editar os dados
 
-Procure por `// TROCAR:` no código para encontrar pontos editáveis (imagens, links, métricas).
+Todo o conteúdo é centralizado em **`src/data/*`** — não é preciso mexer nos
+componentes para atualizar textos:
 
-## Imagens
-- `public/clients/` — fotos dos clientes (use 256×256 mínimo, quadrada)
-- `public/projects/` — mockups dos projetos (sugerido: 1200×800 ou retrato 800×1200)
+- **`config.ts`** — nome, cargo, `shortBio`, localização e contatos.
+- **`projects.ts`** — projetos exibidos na home e nas páginas `/projetos/<slug>`.
+  O arquivo `projects.test.ts` garante 10 projetos, slugs únicos e campos
+  obrigatórios preenchidos (`npm test`).
+- **`experience.ts`** — histórico profissional exibido na seção Experiência e no CV.
+- **`skills.ts`** — grupos de tecnologias exibidos na seção Skills.
 
-## Notas de design
-- Tema dark premium intencional (sofisticação + destaque para mockups claros)
-- Acento principal: lime/emerald gradient (codifica crescimento/ROI)
-- Tipografia mista: Geist Sans + Instrument Serif italic para acentos human-touch
-- Animações: Framer Motion com `prefers-reduced-motion` respeitado
+## Pendências (TODOs — dependem de dados reais do Lucas)
+
+Estes pontos não bloqueiam o build; ao preencher, o conteúdo aparece
+automaticamente:
+
+- **GitHub / LinkedIn** — substituir os valores `"TODO"` em
+  `src/data/config.ts`. Os botões sociais aparecem sozinhos via o helper
+  `hasValue` quando o link real for informado.
+- **Foto profissional** — adicionar `public/lucas.jpg` para habilitar o avatar
+  no Hero/Sobre.
+- **Screenshots dos projetos** — adicionar as imagens em
+  `public/projects/<slug>.png` (mesmos slugs de `projects.ts`). Enquanto não
+  existirem, o card usa um fallback por cor de acento — sem imagem quebrada.
+- **`metadataBase` (URL de deploy)** — em `src/app/layout.tsx` há um placeholder
+  `https://lucasferreira.dev`. Trocar pela URL real (ex.: Vercel) após publicar.
+- **`og-image.png` (opcional)** — se quiser preview em redes sociais, criar
+  `public/og-image.png` e habilitar `openGraph.images` em `layout.tsx`
+  (comentário `TODO` já indica o local).
+
+## Deploy
+
+Projeto Next.js padrão — pronto para deploy na **Vercel** (`vercel` ou conectando
+o repositório). Lembrar de atualizar o `metadataBase` com a URL final.

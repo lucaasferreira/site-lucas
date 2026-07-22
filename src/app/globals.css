@@ -61,6 +61,43 @@
   }
 }
 
+/* ===========================================================
+   Impressão / Salvar como PDF (página /cv)
+   Esconde a navegação global e o cromo do site, força fundo
+   branco + texto escuro e ajusta as margens A4 para 1 página.
+   =========================================================== */
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  /* Header e Footer globais (layout.tsx) + qualquer barra de ação */
+  body > header,
+  body > footer,
+  .no-print {
+    display: none !important;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    background-image: none !important;
+  }
+
+  /* Evita cortar seções/cartões entre páginas */
+  section,
+  article {
+    break-inside: avoid;
+  }
+
+  /* Garante que as cores de fundo/accents saiam na impressão */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
 @layer utilities {
   .container-site {
     @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;

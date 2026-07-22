@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { siteConfig } from "@/data/config";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -29,21 +31,27 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+const siteTitle = `${siteConfig.name} — ${siteConfig.role}`;
+
 export const metadata: Metadata = {
+  // TODO: trocar pela URL real de deploy (ex.: Vercel) quando o site for publicado.
+  metadataBase: new URL("https://lucasferreira.dev"),
   title: {
-    default: `${siteConfig.name} · ${siteConfig.role}`,
-    template: `%s · ${siteConfig.name}`,
+    default: siteTitle,
+    // As páginas filhas (ex.: /projetos/[slug], /cv) já definem títulos
+    // completos terminando em "— Lucas Ferreira"; o template "%s" apenas
+    // repassa esse título sem acrescentar sufixo (evita duplicar o nome).
+    template: "%s",
   },
-  description:
-    "Construo aplicativos, sistemas e produtos digitais com foco em resultado para infoprodutores, academias, personais e empresas. +R$ 400k gerados para clientes em 6 anos.",
+  description: siteConfig.shortBio,
   keywords: [
-    "desenvolvedor",
+    "desenvolvedor full-stack",
+    "desenvolvedor web",
     "aplicativos",
-    "sistemas web",
-    "produtos digitais",
-    "infoprodutores",
-    "react native",
+    "APIs",
+    "react",
     "next.js",
+    "node.js",
     "Lucas Ferreira",
   ],
   authors: [{ name: siteConfig.name }],
@@ -51,16 +59,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    title: `${siteConfig.name} · ${siteConfig.role}`,
-    description:
-      "Produtos digitais que geram crescimento, retenção e escala. Cases reais, métricas reais.",
+    title: siteTitle,
+    description: siteConfig.shortBio,
     siteName: siteConfig.name,
+    // TODO (opcional): adicionar `images: ["/og-image.png"]` quando existir
+    // uma imagem real de Open Graph em public/og-image.png.
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} · ${siteConfig.role}`,
-    description:
-      "Produtos digitais que geram crescimento, retenção e escala.",
+    title: siteTitle,
+    description: siteConfig.shortBio,
   },
   robots: {
     index: true,
@@ -76,7 +84,11 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
