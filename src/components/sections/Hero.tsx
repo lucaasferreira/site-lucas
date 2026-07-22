@@ -1,7 +1,19 @@
+import { Github, Linkedin } from "lucide-react";
+import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { siteConfig } from "@/data/config";
+import { GradientText } from "@/components/ui/GradientText";
+import { Reveal } from "@/components/ui/Reveal";
+import { SectionLabel } from "@/components/ui/SectionLabel";
+import { siteConfig, hasValue } from "@/data/config";
+
+const techs = ["React", "Next.js", "React Native", "Node.js", "PostgreSQL"];
+
+const [firstName, ...restName] = siteConfig.name.split(" ");
+const surname = restName.join(" ");
 
 export function Hero() {
+  const { github, linkedin } = siteConfig.contact;
+
   return (
     <section
       id="top"
@@ -16,20 +28,55 @@ export function Hero() {
 
       <div className="container-site">
         <div className="flex flex-col gap-6 py-20 sm:py-28">
-          <p className="font-mono text-xs uppercase tracking-[0.18em] text-brand-300">
-            {siteConfig.role}
-          </p>
-          <h1 className="text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl">
-            {siteConfig.name}
-          </h1>
-          <p className="max-w-xl text-pretty text-base leading-relaxed text-white/65 sm:text-lg">
-            {siteConfig.shortBio}
-          </p>
-          <div className="flex flex-wrap items-center gap-3">
-            <Button href="#projetos" size="lg" variant="primary" withArrow>
-              Ver projetos
-            </Button>
-          </div>
+          <Reveal>
+            <SectionLabel>{siteConfig.role}</SectionLabel>
+          </Reveal>
+
+          <Reveal delay={0.05}>
+            <h1 className="text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl">
+              {firstName}{" "}
+              {surname ? <GradientText>{surname}</GradientText> : null}
+            </h1>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <p className="max-w-xl text-pretty text-base leading-relaxed text-white/65 sm:text-lg">
+              {siteConfig.shortBio}
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.15}>
+            <div className="flex flex-wrap items-center gap-2">
+              {techs.map((tech) => (
+                <Badge key={tech} variant="brand">
+                  {tech}
+                </Badge>
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.2}>
+            <div className="flex flex-wrap items-center gap-3">
+              <Button href="#projetos" size="lg" variant="primary" withArrow>
+                Ver projetos
+              </Button>
+              <Button href="/cv" size="lg" variant="secondary">
+                Baixar CV
+              </Button>
+              {hasValue(github) ? (
+                <Button href={github} size="lg" variant="ghost">
+                  <Github className="h-4 w-4" aria-hidden />
+                  GitHub
+                </Button>
+              ) : null}
+              {hasValue(linkedin) ? (
+                <Button href={linkedin} size="lg" variant="ghost">
+                  <Linkedin className="h-4 w-4" aria-hidden />
+                  LinkedIn
+                </Button>
+              ) : null}
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
