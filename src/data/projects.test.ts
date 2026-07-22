@@ -7,6 +7,13 @@ const SLUGS = [
   "app-alvo-consorcios","descontai","cartao-pre-natal","nutri-compare-pro","totalfitt",
 ];
 
+const EXPECTED_ORDER = [
+  "infotech","atriade-pagamentos","descontai","ritmove","totalfitt",
+  "app-alvo-consorcios","crm-totalfitt","app-nutriconsultora","cartao-pre-natal","nutri-compare-pro",
+];
+
+const WITH_LIVE_URL = ["infotech","ritmove"];
+
 test("tem exatamente 10 projetos", () => {
   assert.equal(projects.length, 10);
 });
@@ -28,5 +35,17 @@ test("campos obrigatórios não-vazios", () => {
 test("liveUrl, quando presente, é http(s)", () => {
   for (const p of projects) {
     if (p.liveUrl) assert.match(p.liveUrl, /^https?:\/\//, `${p.slug} liveUrl`);
+  }
+});
+test("ordem de exibição dos projetos", () => {
+  assert.deepEqual(projects.map((p) => p.slug), EXPECTED_ORDER);
+});
+test("apenas infotech e ritmove têm liveUrl", () => {
+  for (const p of projects) {
+    if (WITH_LIVE_URL.includes(p.slug)) {
+      assert.ok(p.liveUrl, `${p.slug} deveria ter liveUrl`);
+    } else {
+      assert.equal(p.liveUrl, undefined, `${p.slug} não deveria ter liveUrl`);
+    }
   }
 });

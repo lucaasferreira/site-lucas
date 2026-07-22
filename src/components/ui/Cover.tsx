@@ -10,9 +10,10 @@ import { cn } from "@/lib/utils";
  * Capa de projeto com fallback gracioso.
  *
  * Renderiza o `ProjectMock` (gradiente colorido por `accent`) como fundo e,
- * por cima, a imagem real via `next/image`. Se a imagem ainda não existir
- * (ex.: capa não capturada), o `onError` esconde a imagem e sobra só o mock —
- * sem quebra de layout nem ícone de imagem quebrada.
+ * por cima, a imagem real via `next/image`. A imagem começa invisível e só é
+ * revelada no `onLoad` (quando carrega de fato). Se a capa ainda não existir
+ * (ex.: 404), ela simplesmente nunca aparece e sobra o mock — sem flash de
+ * imagem quebrada, sem quebra de layout e sem ruído de erro no console.
  *
  * Compartilhado entre `ProjectCard` (grid) e `ProjectDetail` (página do projeto).
  */
@@ -27,21 +28,22 @@ export function Cover({
   alt: string;
   className?: string;
 }) {
-  const [failed, setFailed] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   return (
     <div className={cn("relative h-full w-full overflow-hidden", className)}>
       <ProjectMock accent={accent} label="preview" className="absolute inset-0" />
-      {!failed ? (
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className="object-cover"
-          onError={() => setFailed(true)}
-        />
-      ) : null}
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+        className={cn(
+          "object-cover transition-opacity duration-500",
+          loaded ? "opacity-100" : "opacity-0",
+        )}
+        onLoad={() => setLoaded(true)}
+      />
     </div>
   );
 }

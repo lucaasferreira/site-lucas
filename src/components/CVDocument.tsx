@@ -47,12 +47,22 @@ export function CVDocument() {
             <MapPin className="h-3.5 w-3.5 text-brand-600" aria-hidden /> {siteConfig.location}
           </span>
           {hasValue(github) ? (
-            <a href={github} className="inline-flex items-center gap-1.5">
+            <a
+              href={github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5"
+            >
               <Github className="h-3.5 w-3.5 text-brand-600" aria-hidden /> {github.replace(/^https?:\/\//, "")}
             </a>
           ) : null}
           {hasValue(linkedin) ? (
-            <a href={linkedin} className="inline-flex items-center gap-1.5">
+            <a
+              href={linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5"
+            >
               <Linkedin className="h-3.5 w-3.5 text-brand-600" aria-hidden /> {linkedin.replace(/^https?:\/\//, "")}
             </a>
           ) : null}
@@ -109,6 +119,8 @@ export function CVDocument() {
                 {project.liveUrl ? (
                   <a
                     href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-0.5 text-[10px] font-medium text-brand-600 print:text-[9px]"
                   >
                     <ExternalLink className="h-3 w-3" aria-hidden />
