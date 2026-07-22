@@ -31,10 +31,17 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+const siteTitle = `${siteConfig.name} — ${siteConfig.role}`;
+
 export const metadata: Metadata = {
+  // TODO: trocar pela URL real de deploy (ex.: Vercel) quando o site for publicado.
+  metadataBase: new URL("https://lucasferreira.dev"),
   title: {
-    default: `${siteConfig.name} · ${siteConfig.role}`,
-    template: `%s · ${siteConfig.name}`,
+    default: siteTitle,
+    // As páginas filhas (ex.: /projetos/[slug], /cv) já definem títulos
+    // completos terminando em "— Lucas Ferreira"; o template "%s" apenas
+    // repassa esse título sem acrescentar sufixo (evita duplicar o nome).
+    template: "%s",
   },
   description: siteConfig.shortBio,
   keywords: [
@@ -52,13 +59,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    title: `${siteConfig.name} · ${siteConfig.role}`,
+    title: siteTitle,
     description: siteConfig.shortBio,
     siteName: siteConfig.name,
+    // TODO (opcional): adicionar `images: ["/og-image.png"]` quando existir
+    // uma imagem real de Open Graph em public/og-image.png.
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} · ${siteConfig.role}`,
+    title: siteTitle,
     description: siteConfig.shortBio,
   },
   robots: {

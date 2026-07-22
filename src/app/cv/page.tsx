@@ -6,7 +6,7 @@ import { PrintButton } from "./PrintButton";
 import { siteConfig } from "@/data/config";
 
 export const metadata: Metadata = {
-  title: "Currículo",
+  title: `Currículo — ${siteConfig.name}`,
   description: `Currículo de ${siteConfig.name} — ${siteConfig.role}.`,
 };
 
