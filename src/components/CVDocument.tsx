@@ -1,4 +1,4 @@
-import { Mail, MessageCircle, MapPin, Github, Linkedin, ExternalLink } from "lucide-react";
+import { Mail, MessageCircle, MapPin, Github, Linkedin, Globe } from "lucide-react";
 import { siteConfig, hasValue } from "@/data/config";
 import { skillGroups } from "@/data/skills";
 import { experience, education } from "@/data/experience";
@@ -20,7 +20,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 }
 
 export function CVDocument() {
-  const { email, github, linkedin } = siteConfig.contact;
+  const { email, github, linkedin, portfolio } = siteConfig.contact;
 
   return (
     <article
@@ -46,6 +46,16 @@ export function CVDocument() {
           <span className="inline-flex items-center gap-1.5">
             <MapPin className="h-3.5 w-3.5 text-brand-600" aria-hidden /> {siteConfig.location}
           </span>
+          {hasValue(portfolio) ? (
+            <a
+              href={portfolio}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5"
+            >
+              <Globe className="h-3.5 w-3.5 text-brand-600" aria-hidden /> {portfolio.replace(/^https?:\/\//, "")}
+            </a>
+          ) : null}
           {hasValue(github) ? (
             <a
               href={github}
@@ -114,20 +124,7 @@ export function CVDocument() {
         <div className="space-y-2.5">
           {highlightedProjects.map((project) => (
             <div key={project.slug} className="text-[11px] print:text-[10px]">
-              <div className="flex items-baseline gap-2">
-                <h3 className="font-semibold text-ink-900">{project.title}</h3>
-                {project.liveUrl ? (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-0.5 text-[10px] font-medium text-brand-600 print:text-[9px]"
-                  >
-                    <ExternalLink className="h-3 w-3" aria-hidden />
-                    {project.liveUrl.replace(/^https?:\/\//, "")}
-                  </a>
-                ) : null}
-              </div>
+              <h3 className="font-semibold text-ink-900">{project.title}</h3>
               <p className="text-ink-700">{project.tagline}</p>
               <p className="mt-0.5 font-mono text-[9.5px] text-ink-600 print:text-[8.5px]">
                 {project.technologies.join(" · ")}

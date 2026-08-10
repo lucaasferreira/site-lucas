@@ -10,6 +10,7 @@ export const siteConfig = {
     whatsapp: "5521990494384", // formato internacional, sem + ou espaços
     github: "https://github.com/lucaasferreira",
     linkedin: "https://www.linkedin.com/in/lucas-ferreira-7447b9167/",
+    portfolio: "https://site-lucas-liard.vercel.app",
   },
   nav: [
     { label: "Sobre", href: "#sobre" },
