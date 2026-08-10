@@ -25,7 +25,7 @@ export function CVDocument() {
   return (
     <article
       id="cv-document"
-      className="mx-auto w-full max-w-[820px] bg-white px-10 py-9 text-ink-900 shadow-[0_20px_60px_-24px_rgba(0,0,0,0.6)] print:max-w-none print:px-0 print:py-0 print:shadow-none"
+      className="mx-auto w-full max-w-[820px] bg-white px-10 py-9 text-ink-900 shadow-[0_20px_60px_-24px_rgba(0,0,0,0.6)] print:max-w-none print:px-[14mm] print:py-[12mm] print:shadow-none"
     >
       {/* Cabeçalho */}
       <header className="border-b-2 border-ink-900/80 pb-4">
