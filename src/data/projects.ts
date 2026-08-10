@@ -42,9 +42,9 @@ export const projects: Project[] = [
     type: "Web · Mobile · API",
     status: "producao",
     problem:
-      "Infoprodutores brasileiros dependem de várias ferramentas soltas para hospedar cursos, comunidade e cobrança, sem uma marca própria unificada.",
+      "Infoprodutor brasileiro geralmente monta o negócio em cima de três ou quatro ferramentas soltas — uma pra hospedar curso, outra pra comunidade, outra pra cobrança — sem nada com a cara dele. Fui atrás de resolver isso numa plataforma só.",
     solution:
-      "Plataforma white-label multi-tenant: área de membros (streaming de cursos), comunidade estilo Skool, tutor de IA por curso (RAG) e cobrança recorrente dos tenants, com painel do infoprodutor e console de superadmin.",
+      "Construí uma plataforma white-label multi-tenant: área de membros com streaming de curso, comunidade no estilo Skool, tutor de IA por curso usando RAG e cobrança recorrente dos tenants, com painel pro infoprodutor e um console de superadmin pra mim gerenciar tudo.",
     techHighlights: [
       "Backend único Fastify multi-tenant: cada request resolve o tenant por host/slug/domínio customizado.",
       "Isolamento fail-closed via extensão do Prisma (createTenantClient) que força orgId em toda query.",
@@ -63,9 +63,9 @@ export const projects: Project[] = [
     type: "Web · Backend",
     status: "mvp",
     problem:
-      "Operação de vendas de ingressos e produtos precisava de um checkout próprio com controle de vendedores, estoque e rastreio, sem depender de um gateway único.",
+      "Uma operação de venda de ingressos e produtos precisava de checkout próprio, com controle de vendedores e estoque, sem ficar refém de um gateway de pagamento só.",
     solution:
-      "Plataforma Next.js com núcleo financeiro (venda, estoque, webhook), gateway de pagamento atrás de interface (SimulatedProvider em dev, Pagar.me em prod), storage MinIO e processamento assíncrono de webhooks por fila.",
+      "Montei uma plataforma em Next.js com o núcleo financeiro (venda, estoque, webhook) todo meu, e o gateway de pagamento escondido atrás de uma interface — simulado em dev, Pagar.me em produção. Storage em MinIO e webhooks processados de forma assíncrona numa fila.",
     techHighlights: [
       "Gateway de pagamento abstraído por interface, trocável por env sem mudar o núcleo.",
       "Processamento de webhooks com BullMQ + Redis em worker separado.",
@@ -84,9 +84,9 @@ export const projects: Project[] = [
     type: "Mobile · Web · API",
     status: "mvp",
     problem:
-      "Restaurantes precisam atrair clientes com promoções, mas cupons genéricos são fáceis de fraudar e difíceis de controlar; o cliente não tem um lugar único para descobrir e resgatar descontos próximos.",
+      "Restaurante precisa de promoção pra atrair cliente, mas cupom solto é fácil de fraudar e difícil de controlar — e o cliente não tinha um lugar só pra descobrir e resgatar desconto por perto.",
     solution:
-      "Plataforma de cupons com app mobile (Expo) para o cliente descobrir restaurantes próximos, resgatar cupons e usá-los dentro de uma janela curta, painel web para o estabelecimento e API própria com pagamentos e regras de validação.",
+      "Fiz uma plataforma de cupons: app mobile em Expo pro cliente achar restaurante perto, resgatar o cupom e usar dentro de uma janela curta; painel web pro estabelecimento; e uma API própria cuidando de pagamento e das regras de validação.",
     techHighlights: [
       "API em Elysia (Bun) com Drizzle ORM sobre PostgreSQL e autenticação via better-auth.",
       "Contrato de API tipado ponta a ponta: cliente gerado por Kubb (OpenAPI) e consumido por web e mobile com TanStack Query.",
@@ -106,9 +106,9 @@ export const projects: Project[] = [
     type: "Web (PWA) · Mobile · Backend",
     status: "producao",
     problem:
-      "Treinadora precisava vender treinos e cardápios como cursos e assinaturas recorrentes, com uma experiência instalável para a aluna e um painel administrativo próprio, sem juntar ferramentas soltas.",
+      "Uma treinadora queria vender treino e cardápio como curso e assinatura recorrente, com algo instalável pra aluna e um painel administrativo que fosse dela — sem empilhar ferramenta em cima de ferramenta.",
     solution:
-      "Monorepo com Web PWA (app da aluna + área /admin), app mobile Expo em paridade gradual e backend Supabase (Postgres + Edge Functions Deno) cobrindo pagamentos, webhooks, reconciliações e notificações.",
+      "Construí um monorepo: web em PWA (o app da aluna mais a área /admin), app mobile em Expo evoluindo em paridade gradual, e backend no Supabase (Postgres + Edge Functions em Deno) cuidando de pagamento, webhook, reconciliação e notificação.",
     techHighlights: [
       "Monorepo npm workspaces com tipos do banco (@ritmove/db-types) e lógica compartilhada (@ritmove/shared) entre web e mobile.",
       "Backend serverless: 26 Edge Functions Deno no Supabase, com RLS como camada de isolamento e jobs agendados via pg_cron.",
@@ -127,9 +127,9 @@ export const projects: Project[] = [
     type: "API · Web · Mobile",
     status: "mvp",
     problem:
-      "A academia Total Fitt precisava de uma base unificada para evoluir API, painel web e app mobile em conjunto, com deploy previsível e código consistente entre as três frentes.",
+      "A academia Total Fitt precisava evoluir API, painel web e app mobile juntos, sem cada frente virar um projeto isolado com seu próprio jeito de fazer deploy.",
     solution:
-      "Monorepo Bun + Turborepo reunindo API (Elysia/Bun), web (Next.js) e mobile (Expo/React Native) sob a mesma pipeline, com build de imagens Docker e deploy automatizado.",
+      "Juntei tudo num monorepo Bun + Turborepo — API em Elysia, web em Next.js, mobile em Expo — na mesma pipeline, com build de imagem Docker e deploy automatizado.",
     techHighlights: [
       "Monorepo Turborepo com workspaces Bun para orquestrar build/lint/dev das três aplicações a partir de um comando.",
       "API em Elysia sobre o runtime Bun, empacotada em imagem Docker publicada no GHCR.",
@@ -148,9 +148,9 @@ export const projects: Project[] = [
     type: "Web · SaaS",
     status: "mvp",
     problem:
-      "Consultores e empresas de consórcio precisavam simular estratégias, guardar o histórico por cliente e organizar equipes, com cobrança por assinatura e isolamento de dados entre organizações.",
+      "Consultor de consórcio precisa simular estratégia na hora, na frente do cliente, e guardar esse histórico depois — mas sem misturar os dados de uma empresa com os de outra.",
     solution:
-      "SaaS Next.js (App Router) com autenticação, multi-tenancy, cadastro de clientes, motor de simulação, planos/assinaturas via Stripe, gestão de equipe e painel administrativo — validado ponta a ponta localmente.",
+      "SaaS em Next.js com autenticação, multi-tenancy de verdade, cadastro de cliente, motor de simulação, assinatura via Stripe, gestão de equipe e painel administrativo. Validei o fluxo inteiro localmente antes de considerar pronto.",
     techHighlights: [
       "Isolamento real por RLS no Supabase: toda tabela de negócio tem política; service role restrito a webhook/convite/admin.",
       "Stripe como fonte da verdade de cobrança; o banco é espelho via webhooks idempotentes, sem plano/preço vindo do frontend.",
@@ -170,9 +170,9 @@ export const projects: Project[] = [
     type: "Web · Backend · IA",
     status: "mvp",
     problem:
-      "A academia Total Fitt (Barra da Tijuca/RJ) recebia leads pelo WhatsApp e precisava qualificá-los, organizar o funil de vendas e automatizar o primeiro atendimento sem perder o controle do time humano.",
+      "A Total Fitt (Barra da Tijuca/RJ) recebia lead pelo WhatsApp e precisava qualificar, organizar o funil e automatizar o primeiro contato — mas sem tirar o time humano da jogada.",
     solution:
-      "CRM que integra o WhatsApp (Evolution API), grava contatos/conversas no banco e aciona um agente de IA (Gemini) para qualificar o lead, com pipeline kanban, atendimento e broadcasts.",
+      "Construí um CRM que puxa o WhatsApp via Evolution API, grava contato e conversa no banco e aciona um agente de IA (Gemini) pra qualificar o lead, com pipeline kanban, atendimento e broadcast.",
     techHighlights: [
       "Backend em Supabase (Postgres + Edge Functions Deno): webhook resolve o JID (inclui @lid), cria contato/conversa e dispara a IA.",
       "Agente de IA com porteiro de ciclo de vida antes do LLM (barra cliente/handoff), kill-switch global e horário comercial.",
@@ -191,9 +191,9 @@ export const projects: Project[] = [
     type: "Mobile · Web · API",
     status: "mvp",
     problem:
-      "Consultorias de segurança de alimentos fazem visitas de campo (clientes, não conformidades, temperaturas de equipamentos, documentos) e precisam registrar tudo em campo e consolidar num painel, com módulo de receitas/nutrição.",
+      "Consultoria de segurança de alimentos vive de visita de campo — cliente, não conformidade, temperatura de equipamento, documento — e precisava registrar isso na hora e consolidar tudo num painel depois, com um módulo de receitas junto.",
     solution:
-      "Monorepo mobile-first com app de campo (Expo) para o consultor e painel admin web (Next.js), compartilhando domínio e backend: visitas, não conformidades, equipamentos, alimentos, receitas com custo, rotulagem e KPIs.",
+      "Fiz um monorepo mobile-first: app de campo em Expo pro consultor e painel admin em Next.js, os dois compartilhando o mesmo domínio e backend — visita, não conformidade, equipamento, receita com custo, rotulagem e os KPIs da operação.",
     techHighlights: [
       "Monorepo pnpm + Turborepo com fonte única de tipos e schemas Zod no pacote domain, reusados por API, web e mobile.",
       "API Fastify com a lógica de negócio isolada em packages/services e PostgreSQL via Prisma.",
@@ -212,9 +212,9 @@ export const projects: Project[] = [
     type: "Mobile · Web · API",
     status: "mvp",
     problem:
-      "O acompanhamento pré-natal envolve consultas, vacinas, exames e alertas espalhados em papel; médico e paciente precisavam de uma visão digital única e segura da gestação.",
+      "Acompanhamento pré-natal ainda vive espalhado em papel — consulta, vacina, exame, alerta. Médico e paciente precisavam de uma visão digital só, segura, da gestação inteira.",
     solution:
-      "Monorepo com app mobile da paciente (Expo), painel web do médico (React + Vite) e API REST (Fastify + Prisma + PostgreSQL), ligados por um pacote de tipos e schemas Zod compartilhados.",
+      "Monorepo com app mobile da paciente (Expo), painel web do médico (React + Vite) e API REST em Fastify/Prisma/PostgreSQL, todos puxando de um pacote só de tipos e schemas Zod compartilhados.",
     techHighlights: [
       "packages/shared como fonte única de verdade: enums, tipos e schemas Zod validam inputs na API e reusam nos formulários do web.",
       "Autenticação JWT com access token (15min) + refresh token (7d) persistido; renovação automática por interceptor no 401.",
@@ -234,9 +234,9 @@ export const projects: Project[] = [
     type: "Web · IA",
     status: "mvp",
     problem:
-      "Nutricionistas recebem exames de bioimpedância (Tanita) e planos alimentares em PDF e precisam comparar a evolução do paciente e montar dietas, sem digitar tudo à mão.",
+      "Nutricionista recebe exame de bioimpedância (Tanita) e plano alimentar em PDF, e precisa comparar a evolução do paciente — sem ficar digitando número um por um.",
     solution:
-      "Aplicação web que importa PDFs de bioimpedância e de dieta, extrai os dados com IA, gera relatórios de evolução com gráficos e medições comparativas e permite criar/gerenciar dietas.",
+      "Uma web app que importa esses PDFs, extrai os dados com IA e monta relatório de evolução com gráfico e medição comparativa, além de deixar criar e gerenciar a dieta direto por ali.",
     techHighlights: [
       "Extração de dados de PDFs (dieta e Tanita) por Edge Functions Deno chamando o Google Gemini.",
       "Backend Supabase (Auth + Postgres + Edge Functions); secrets do Gemini isolados no runtime das functions.",
